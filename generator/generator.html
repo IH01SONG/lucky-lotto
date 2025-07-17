@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="google-site-verification"
+      content="opFI7kYNCjRAHIy4VCxuoZHLv-2gpfNLUZfH2pMyaGY"
+    />
+    <meta
+      name="description"
+      content="쉽고 빠른 무료 로또 번호 생성기. 1~45 숫자 중 6개를 무작위로 뽑아드립니다."
+    />
+    <meta
+      name="keywords"
+      content="로또, 로또 번호, 번호 생성기, 로또 추천, 무료 로또"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lucky6 - 로또 번호 생성기</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #fff;
+        color: #000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        padding: 20px;
+      }
+      h1 {
+        margin-bottom: 20px;
+      }
+      #numbers {
+        font-size: 2rem;
+        margin: 20px 0;
+        letter-spacing: 10px;
+      }
+      button {
+        font-size: 1rem;
+        padding: 10px 20px;
+        margin: 5px;
+        cursor: pointer;
+        border: 1px solid #000;
+        background: #fff;
+        transition: background 0.3s, color 0.3s;
+      }
+      button:hover {
+        background: #000;
+        color: #fff;
+      }
+      #adsense-placeholder {
+        margin-top: 40px;
+        width: 320px;
+        height: 100px;
+        border: 1px dashed #ccc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #999;
+        font-size: 0.9rem;
+      }
+    </style>
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9642959094529511"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <h1>Lucky6 - 로또 번호 생성기</h1>
+    <div id="numbers">- - - - - -</div>
+    <div>
+      <button id="generateBtn">번호 생성</button>
+      <button id="copyBtn">복사하기</button>
+    </div>
+    <div id="adsense-placeholder">[여기에 Google AdSense 광고 삽입]</div>
+
+    <script>
+      const numbersEl = document.getElementById("numbers");
+      const generateBtn = document.getElementById("generateBtn");
+      const copyBtn = document.getElementById("copyBtn");
+
+      function generateNumbers() {
+        const nums = new Set();
+        while (nums.size < 6) {
+          const n = Math.floor(Math.random() * 45) + 1;
+          nums.add(n);
+        }
+        const arr = Array.from(nums).sort((a, b) => a - b);
+        numbersEl.textContent = arr.join("  ");
+        return arr;
+      }
+
+      generateBtn.addEventListener("click", generateNumbers);
+
+      copyBtn.addEventListener("click", () => {
+        const text = numbersEl.textContent;
+        if (text.includes("-")) {
+          alert("먼저 번호를 생성해주세요!");
+          return;
+        }
+        navigator.clipboard.writeText(text).then(() => {
+          alert("번호가 복사되었습니다: " + text);
+        });
+      });
+
+      // 페이지 로드 시 자동으로 번호 생성 (선택 사항)
+      // generateNumbers();
+    </script>
+  </body>
+</html>

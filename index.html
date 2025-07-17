@@ -2,115 +2,88 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="google-site-verification"
-      content="opFI7kYNCjRAHIy4VCxuoZHLv-2gpfNLUZfH2pMyaGY"
-    />
-    <meta
-      name="description"
-      content="쉽고 빠른 무료 로또 번호 생성기. 1~45 숫자 중 6개를 무작위로 뽑아드립니다."
-    />
-    <meta
-      name="keywords"
-      content="로또, 로또 번호, 번호 생성기, 로또 추천, 무료 로또"
-    />
-    <meta name="robots" content="index, follow" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Lucky6 - 로또 번호 생성기</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lucky6 로또 블로그</title>
     <style>
       body {
-        font-family: Arial, sans-serif;
-        background: #fff;
-        color: #000;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
+        font-family: "Arial", sans-serif;
         margin: 0;
-        padding: 20px;
+        background: #f4f4f4;
+        color: #333;
       }
-      h1 {
-        margin-bottom: 20px;
-      }
-      #numbers {
-        font-size: 2rem;
-        margin: 20px 0;
-        letter-spacing: 10px;
-      }
-      button {
-        font-size: 1rem;
-        padding: 10px 20px;
-        margin: 5px;
-        cursor: pointer;
-        border: 1px solid #000;
-        background: #fff;
-        transition: background 0.3s, color 0.3s;
-      }
-      button:hover {
-        background: #000;
+      header {
+        background-color: #004225;
         color: #fff;
+        padding: 20px;
+        text-align: center;
       }
-      #adsense-placeholder {
-        margin-top: 40px;
-        width: 320px;
-        height: 100px;
-        border: 1px dashed #ccc;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #999;
+      main {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 0 20px;
+      }
+      article {
+        background: #fff;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      article h2 {
+        margin-top: 0;
+      }
+      footer {
+        background-color: #004225;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
         font-size: 0.9rem;
       }
+      .btn {
+        display: inline-block;
+        background: #004225;
+        color: #fff;
+        padding: 10px 15px;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 10px;
+      }
     </style>
-    <script
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9642959094529511"
-      crossorigin="anonymous"
-    ></script>
   </head>
   <body>
-    <h1>Lucky6 - 로또 번호 생성기</h1>
-    <div id="numbers">- - - - - -</div>
-    <div>
-      <button id="generateBtn">번호 생성</button>
-      <button id="copyBtn">복사하기</button>
-    </div>
-    <div id="adsense-placeholder">[여기에 Google AdSense 광고 삽입]</div>
+    <header>
+      <h1>Lucky6 - 로또 블로그</h1>
+      <p>로또 번호, 당첨 팁, 분석 정보 제공!</p>
+    </header>
 
-    <script>
-      const numbersEl = document.getElementById("numbers");
-      const generateBtn = document.getElementById("generateBtn");
-      const copyBtn = document.getElementById("copyBtn");
+    <main>
+      <article>
+        <h2>로또 번호 생성기</h2>
+        <p>매주 로또 번호를 자동으로 생성해보세요!</p>
+        <a href="http://127.0.0.1:5500/generator/generator.html" class="btn"
+          >번호 생성하러 가기</a
+        >
+      </article>
 
-      function generateNumbers() {
-        const nums = new Set();
-        while (nums.size < 6) {
-          const n = Math.floor(Math.random() * 45) + 1;
-          nums.add(n);
-        }
-        const arr = Array.from(nums).sort((a, b) => a - b);
-        numbersEl.textContent = arr.join("  ");
-        return arr;
-      }
+      <article>
+        <h2>🎯 이번 주 로또 분석 (1103회)</h2>
+        <p>지난 주 당첨 번호 분석과 이번 주 번호 예측 전략을 알아봅니다.</p>
+        <a href="http://127.0.0.1:5500/prediction.html" class="btn"
+          >자세히 보기</a
+        >
+      </article>
 
-      generateBtn.addEventListener("click", generateNumbers);
+      <article>
+        <h2>📊 AI가 뽑은 이번 주 행운의 숫자</h2>
+        <p>Lucky6 AI 알고리즘으로 예측한 번호를 확인해보세요!</p>
+        <a href="http://127.0.0.1:5500/lucky-ai.html" class="btn"
+          >추천 번호 보기</a
+        >
+      </article>
+    </main>
 
-      copyBtn.addEventListener("click", () => {
-        const text = numbersEl.textContent;
-        if (text.includes("-")) {
-          alert("먼저 번호를 생성해주세요!");
-          return;
-        }
-        navigator.clipboard.writeText(text).then(() => {
-          alert("번호가 복사되었습니다: " + text);
-        });
-      });
-
-      // 페이지 로드 시 자동으로 번호 생성 (선택 사항)
-      // generateNumbers();
-    </script>
+    <footer>
+      <p>&copy; 2025 Lucky6. 모든 권리 보유.</p>
+    </footer>
   </body>
 </html>
